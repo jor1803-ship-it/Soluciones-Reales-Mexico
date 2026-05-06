@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soluciones Reales México | Despacho Jurídico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #162032;
+    --navy-light: #1e3050;
+    --gold: #c9a84c;
+    --gold-light: #e2c270;
+    --gold-pale: #f5e8c2;
+    --cream: #faf7f0;
+    --white: #ffffff;
+    --gray: #8a8f99;
+    --gray-light: #f0ede6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(13,27,42,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    transition: all .3s;
+  }
+  nav.scrolled { height: 60px; box-shadow: 0 4px 30px rgba(0,0,0,.4); }
+
+  .logo-nav {
+    display: flex; align-items: center; gap: 14px; text-decoration: none;
+  }
+  .logo-icon {
+    width: 44px; height: 44px;
+  }
+  .logo-text-nav {
+    display: flex; flex-direction: column; line-height: 1.1;
+  }
+  .logo-text-nav span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 600; color: var(--gold);
+    letter-spacing: .06em;
+  }
+  .logo-text-nav span:last-child {
+    font-size: .58rem; font-weight: 300; color: rgba(255,255,255,.55);
+    letter-spacing: .18em; text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,.75); text-decoration: none;
+    font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+    transition: color .25s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--gold); color: var(--navy) !important;
+    padding: 9px 22px; font-weight: 600 !important;
+    border-radius: 2px; transition: background .25s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #0a1520 100%);
+  }
+  .hero-img-overlay {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600&q=80');
+    background-size: cover; background-position: center;
+    opacity: .09;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-gradient-right {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 45%;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,.04));
+  }
+  .hero-line-top {
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 1200px; margin: 0 auto;
+    padding: 140px 5% 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+
+  .hero-left {}
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: .65rem; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  .hero-tag::before {
+    content: ''; width: 32px; height: 1px; background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 300; color: var(--white);
+    line-height: 1.15; margin-bottom: 1.8rem;
+    letter-spacing: -.01em;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gold);
+  }
+
+  .hero-desc {
+    font-size: .88rem; line-height: 1.85;
+    color: rgba(255,255,255,.6); max-width: 480px;
+    margin-bottom: 3rem; font-weight: 300;
+  }
+
+  .hero-buttons {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 15px 36px; font-size: .75rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: all .3s; border: 2px solid var(--gold);
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    background: transparent; color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201,168,76,.25);
+  }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 15px 36px; font-size: .75rem; font-weight: 500;
+    letter-spacing: .1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    border: 1px solid rgba(255,255,255,.25);
+    transition: all .3s; display: inline-block;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold); color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .hero-right {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    border: 1px solid rgba(201,168,76,.2); background: rgba(201,168,76,.2);
+    overflow: hidden; border-radius: 4px;
+  }
+  .stat-box {
+    background: rgba(13,27,42,.9); padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 700; color: var(--gold);
+    line-height: 1; margin-bottom: .4rem;
+  }
+  .stat-label {
+    font-size: .62rem; color: rgba(255,255,255,.5);
+    letter-spacing: .15em; text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .hero-trust {
+    background: rgba(201,168,76,.07); border: 1px solid rgba(201,168,76,.2);
+    border-radius: 4px; padding: 1.4rem 1.8rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .trust-icon { color: var(--gold); font-size: 1.6rem; }
+  .trust-text { font-size: .78rem; color: rgba(255,255,255,.7); line-height: 1.6; }
+  .trust-text strong { color: var(--gold-light); font-weight: 500; }
+
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,.3); font-size: .6rem; letter-spacing: .2em;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll::after {
+    content: ''; width: 1px; height: 40px; background: linear-gradient(var(--gold), transparent);
+  }
+  @keyframes bounce {
+    0%,100%{transform:translateX(-50%) translateY(0)}
+    50%{transform:translateX(-50%) translateY(8px)}
+  }
+
+  /* ── SECCIÓN BASE ── */
+  section { padding: 100px 5%; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: .63rem; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; font-weight: 500;
+  }
+  .section-tag::before { content:''; width:24px; height:1px; background:var(--gold); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400; line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-sub {
+    font-size: .85rem; line-height: 1.85; color: var(--gray);
+    max-width: 580px; font-weight: 300;
+  }
+
+  .gold-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    margin: 1.5rem 0;
+  }
+
+  /* ── BARRA DE CONFIANZA ── */
+  #trust-bar {
+    background: var(--navy);
+    padding: 40px 5%;
+  }
+  .trust-bar-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 1px; background: rgba(201,168,76,.12);
+  }
+  .trust-item {
+    background: var(--navy);
+    padding: 2.5rem 2rem; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: .8rem;
+  }
+  .trust-ico { font-size: 2rem; color: var(--gold); }
+  .trust-item strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600; color: var(--white);
+  }
+  .trust-item p { font-size: .72rem; color: rgba(255,255,255,.45); font-weight: 300; }
+
+  /* ── NOSOTROS ── */
+  #nosotros {
+    background: var(--cream);
+  }
+  .nosotros-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .nosotros-img-wrap {
+    position: relative;
+  }
+  .nosotros-img {
+    width: 100%; height: 500px; object-fit: cover;
+    border-radius: 2px;
+    filter: brightness(.95) saturate(.9);
+  }
+  .nosotros-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--gold); padding: 2rem;
+    text-align: center; min-width: 140px;
+    box-shadow: 0 10px 40px rgba(201,168,76,.3);
+  }
+  .nosotros-badge span:first-child {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 700; color: var(--navy); line-height: 1;
+  }
+  .nosotros-badge span:last-child {
+    display: block; font-size: .6rem; color: var(--navy);
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-top: .3rem;
+  }
+  .nosotros-pilares {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2.5rem;
+  }
+  .pilar {
+    border-left: 2px solid var(--gold-pale);
+    padding: .8rem 1.2rem;
+    transition: border-color .3s;
+  }
+  .pilar:hover { border-color: var(--gold); }
+  .pilar h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: .3rem;
+  }
+  .pilar p { font-size: .72rem; color: var(--gray); line-height: 1.6; }
+
+  /* ── SERVICIOS ── */
+  #servicios { background: var(--navy); }
+  #servicios .section-title { color: var(--white); }
+  #servicios .section-sub { color: rgba(255,255,255,.5); }
+
+  .servicios-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: rgba(201,168,76,.1);
+    margin-top: 4rem; border: 1px solid rgba(201,168,76,.1);
+    overflow: hidden; border-radius: 4px;
+  }
+  .servicio-card {
+    background: var(--navy-mid);
+    padding: 2.5rem 2rem;
+    transition: background .3s, transform .3s;
+    cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .servicio-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0); transition: transform .4s;
+  }
+  .servicio-card:hover { background: var(--navy-light); }
+  .servicio-card:hover::before { transform: scaleX(1); }
+
+  .serv-img {
+    width: 100%; height: 160px; object-fit: cover;
+    border-radius: 2px; margin-bottom: 1.4rem;
+    filter: brightness(.8) saturate(.7);
+    transition: filter .4s;
+  }
+  .servicio-card:hover .serv-img { filter: brightness(.9) saturate(.9); }
+
+  .serv-icon { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+  .serv-mat {
+    font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: .5rem;
+  }
+  .serv-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; color: var(--white);
+    margin-bottom: .8rem; line-height: 1.3;
+  }
+  .serv-desc {
+    font-size: .72rem; color: rgba(255,255,255,.45);
+    line-height: 1.75; font-weight: 300;
+  }
+  .serv-items {
+    margin-top: 1rem; list-style: none;
+  }
+  .serv-items li {
+    font-size: .68rem; color: rgba(255,255,255,.35);
+    padding: .3rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .serv-items li::before { content: '–'; color: var(--gold); font-size: .65rem; }
+
+  /* ── POR QUÉ NOSOTROS ── */
+  #porque {
+    background: #f5f1e8;
+  }
+  .porque-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: center;
+    margin-top: 3rem;
+  }
+  .porque-features {
+    display: flex; flex-direction: column; gap: 1.8rem;
+  }
+  .feature-row {
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid rgba(201,168,76,.15);
+  }
+  .feature-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .feat-ico {
+    width: 52px; height: 52px; flex-shrink: 0;
+    background: var(--navy); border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 1.5rem;
+  }
+  .feat-body h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; color: var(--navy);
+    margin-bottom: .4rem;
+  }
+  .feat-body p { font-size: .75rem; color: var(--gray); line-height: 1.7; }
+
+  .porque-img-col { position: relative; }
+  .porque-img {
+    width: 100%; height: 550px; object-fit: cover;
+    border-radius: 2px;
+  }
+  .porque-quote {
+    position: absolute; bottom: 30px; left: -30px;
+    background: var(--navy); color: var(--white);
+    padding: 1.8rem 2rem; max-width: 320px;
+    border-left: 3px solid var(--gold);
+  }
+  .porque-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-style: italic; line-height: 1.6;
+    color: rgba(255,255,255,.85); margin-bottom: .8rem;
+  }
+  .porque-quote cite {
+    font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gold); font-style: normal;
+  }
+
+  /* ── PROCESO ── */
+  #proceso { background: var(--cream); }
+  .proceso-steps {
+    display: grid; grid-template-columns: repeat(5,1fr);
+    gap: 0; margin-top: 4rem; position: relative;
+  }
+  .proceso-steps::before {
+    content: ''; position: absolute; top: 34px; left: 10%; right: 10%;
+    height: 1px; background: linear-gradient(90deg, transparent, var(--gold-pale), transparent);
+    z-index: 0;
+  }
+  .step {
+    text-align: center; padding: 0 1rem; position: relative; z-index: 1;
+  }
+  .step-num {
+    width: 68px; height: 68px; margin: 0 auto 1.5rem;
+    border: 1px solid var(--gold-pale); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--gold);
+    transition: all .3s;
+  }
+  .step:hover .step-num {
+    background: var(--gold); color: var(--navy);
+    border-color: var(--gold);
+    box-shadow: 0 8px 25px rgba(201,168,76,.3);
+  }
+  .step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 600; color: var(--navy);
+    margin-bottom: .5rem;
+  }
+  .step p { font-size: .68rem; color: var(--gray); line-height: 1.65; }
+
+  /* ── TESTIMONIOS ── */
+  #testimonios { background: var(--navy); }
+  #testimonios .section-title { color: var(--white); }
+  .test-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .test-card {
+    background: rgba(255,255,255,.04); border: 1px solid rgba(201,168,76,.12);
+    padding: 2.5rem; border-radius: 2px;
+    transition: border-color .3s, background .3s;
+    position: relative;
+  }
+  .test-card:hover {
+    border-color: rgba(201,168,76,.3);
+    background: rgba(255,255,255,.07);
+  }
+  .test-quote-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; color: var(--gold); opacity: .3;
+    line-height: .5; margin-bottom: 1rem;
+  }
+  .test-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-style: italic; line-height: 1.7;
+    color: rgba(255,255,255,.8); margin-bottom: 1.5rem;
+  }
+  .test-stars { color: var(--gold); font-size: .9rem; margin-bottom: 1rem; }
+  .test-author strong {
+    display: block; font-size: .78rem; font-weight: 600; color: var(--white);
+  }
+  .test-author span { font-size: .65rem; color: var(--gold); letter-spacing: .08em; }
+
+  /* ── MAPA / CONTACTO ── */
+  #contacto { background: var(--cream); }
+  .contacto-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .contact-form {
+    display: flex; flex-direction: column; gap: 1.2rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: .5rem; }
+  .form-group label {
+    font-size: .65rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--navy); font-weight: 500;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    border: 1px solid rgba(0,0,0,.12); border-radius: 2px;
+    padding: 13px 16px; font-size: .8rem; font-family: 'Montserrat', sans-serif;
+    background: var(--white); color: var(--navy);
+    transition: border-color .25s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .form-note {
+    font-size: .65rem; color: var(--gray); line-height: 1.6;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 2rem; }
+  .info-box {
+    background: var(--navy); padding: 2rem;
+    border-radius: 2px; border-left: 3px solid var(--gold);
+  }
+  .info-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--white); margin-bottom: 1.2rem;
+  }
+  .info-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .info-item:last-child { margin-bottom: 0; }
+  .info-ico { color: var(--gold); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .info-item div strong {
+    display: block; font-size: .75rem; color: var(--white); margin-bottom: .2rem;
+  }
+  .info-item div span { font-size: .72rem; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+  .map-embed {
+    width: 100%; height: 220px; border: none;
+    border-radius: 2px; filter: grayscale(.5) contrast(1.1);
+  }
+
+  .horarios-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: 1rem;
+  }
+  .hora-item {
+    font-size: .68rem; color: rgba(255,255,255,.55);
+    display: flex; justify-content: space-between;
+    padding: .4rem 0; border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .hora-item span:last-child { color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050d15; color: rgba(255,255,255,.4);
+    padding: 60px 5% 30px;
+  }
+  .footer-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.06);
+    margin-bottom: 2rem;
+  }
+  .footer-brand { }
+  .footer-logo-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem; }
+  .footer-desc { font-size: .72rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  .footer-social { display: flex; gap: .8rem; }
+  .social-btn {
+    width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.1);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.4); text-decoration: none; font-size: .85rem;
+    transition: all .25s;
+  }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  .footer-col h4 {
+    font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.4rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: .7rem; }
+  .footer-col ul li a {
+    font-size: .72rem; color: rgba(255,255,255,.4); text-decoration: none;
+    transition: color .25s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .65rem;
+  }
+  .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+  /* ── FLOATING WHATSAPP ── */
+  .wa-float {
+    position: fixed; bottom: 30px; right: 30px; z-index: 999;
+    width: 56px; height: 56px; background: #25d366;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 25px rgba(37,211,102,.4);
+    text-decoration: none; transition: transform .3s, box-shadow .3s;
+    animation: pulse-wa 2s infinite;
+  }
+  .wa-float:hover { transform: scale(1.1); box-shadow: 0 10px 35px rgba(37,211,102,.5); }
+  @keyframes pulse-wa {
+    0%,100%{box-shadow:0 6px 25px rgba(37,211,102,.4)}
+    50%{box-shadow:0 6px 40px rgba(37,211,102,.7)}
+  }
+  .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+  /* ── ANIMACIONES DE ENTRADA ── */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width: 900px){
+    .hero-content { grid-template-columns:1fr; }
+    .hero-right { display: none; }
+    .nosotros-grid { grid-template-columns:1fr; }
+    .servicios-grid { grid-template-columns:1fr 1fr; }
+    .porque-grid { grid-template-columns:1fr; }
+    .proceso-steps { grid-template-columns:1fr 1fr; }
+    .test-grid { grid-template-columns:1fr; }
+    .contacto-grid { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .trust-bar-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media(max-width: 580px){
+    .servicios-grid { grid-template-columns:1fr; }
+    .nav-links { display: none; }
+    section { padding: 70px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="logo-nav">
+    <svg class="logo-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Scales of Justice stylized logo -->
+      <rect width="44" height="44" rx="2" fill="#0d1b2a"/>
+      <!-- Columna central -->
+      <rect x="21" y="8" width="2" height="28" fill="#c9a84c"/>
+      <!-- Balanza izquierda -->
+      <line x1="22" y1="14" x2="10" y2="20" stroke="#c9a84c" stroke-width="1.2"/>
+      <!-- Balanza derecha -->
+      <line x1="22" y1="14" x2="34" y2="20" stroke="#c9a84c" stroke-width="1.2"/>
+      <!-- Platillo izquierdo -->
+      <path d="M7 20 Q10 26 13 20" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+      <!-- Platillo derecho -->
+      <path d="M31 20 Q34 26 37 20" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+      <!-- Base -->
+      <rect x="16" y="36" width="12" height="1.5" fill="#c9a84c" rx="1"/>
+      <!-- Corona / diamante superior -->
+      <polygon points="22,5 20,9 22,8 24,9" fill="#c9a84c"/>
+      <!-- S pequeño estilizado -->
+      <text x="19" y="33" font-family="serif" font-size="7" fill="#c9a84c" font-weight="bold">SR</text>
+    </svg>
+    <div class="logo-text-nav">
+      <span>Soluciones Reales</span>
+      <span>México · Despacho Jurídico</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#porque">¿Por qué Nosotros?</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#contacto" class="nav-cta">Consulta Gratuita</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-img-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-gradient-right"></div>
+  <div class="hero-line-top"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag">Despacho Jurídico · Ciudad de México</div>
+      <h1 class="hero-title">
+        Defendemos sus derechos<br>
+        con <em>precisión jurídica</em><br>
+        y resultados reales
+      </h1>
+      <p class="hero-desc">
+        En Soluciones Reales México, combinamos trayectoria, estrategia legal y compromiso absoluto con cada cliente. Su tranquilidad es nuestra misión.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contacto" class="btn-primary">Consulta sin costo</a>
+        <a href="#servicios" class="btn-outline">Nuestros Servicios</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Años de experiencia</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Casos resueltos</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">8</div>
+          <div class="stat-label">Materias legales</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Clientes satisfechos</div>
+        </div>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-icon">🛡️</div>
+        <div class="trust-text">
+          <strong>Despacho registrado ante el Colegio de Abogados de México.</strong><br>
+          Comprometidos con la ética profesional y la excelencia jurídica.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Descubrir</div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust-bar">
+  <div class="trust-bar-grid">
+    <div class="trust-item">
+      <div class="trust-ico">⚖️</div>
+      <strong>Ética Profesional</strong>
+      <p>Actuamos con integridad y transparencia en cada caso</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ico">🔒</div>
+      <strong>Confidencialidad Total</strong>
+      <p>Su información es protegida bajo secreto profesional</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ico">📋</div>
+      <strong>Estrategia Personalizada</strong>
+      <p>Cada caso recibe atención y un plan legal a medida</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ico">🤝</div>
+      <strong>Consulta Inicial Gratuita</strong>
+      <p>Le orientamos sin compromiso desde el primer contacto</p>
+    </div>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="container nosotros-grid">
+    <div class="nosotros-img-wrap fade-up">
+      <img class="nosotros-img"
+        src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=800&q=80"
+        alt="Despacho Jurídico Soluciones Reales México">
+      <div class="nosotros-badge">
+        <span>15+</span>
+        <span>Años de Confianza</span>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div class="section-tag">Quiénes Somos</div>
+      <h2 class="section-title">Un despacho construido sobre <em>resultados</em></h2>
+      <div class="gold-divider"></div>
+      <p class="section-sub">
+        Soluciones Reales México es un despacho jurídico integral establecido en la Ciudad de México. Nuestro equipo de abogados especializados por materia brinda asesoría y representación legal de alto nivel, con enfoque humano y estrategia ganadora.
+      </p>
+      <p class="section-sub" style="margin-top:1rem;">
+        Desde nuestra oficina en Colonia Vista Alegre, Cuauhtémoc, atendemos personas físicas, empresas y familias que buscan soluciones jurídicas concretas y eficaces.
+      </p>
+      <div class="nosotros-pilares">
+        <div class="pilar">
+          <h4>Misión</h4>
+          <p>Brindar soluciones jurídicas reales, éticas y accesibles que protejan los intereses de nuestros clientes.</p>
+        </div>
+        <div class="pilar">
+          <h4>Visión</h4>
+          <p>Ser el despacho de referencia en CDMX reconocido por su excelencia, resultados y compromiso humano.</p>
+        </div>
+        <div class="pilar">
+          <h4>Valores</h4>
+          <p>Honestidad, lealtad, confidencialidad y dedicación absoluta a cada cliente.</p>
+        </div>
+        <div class="pilar">
+          <h4>Presencia</h4>
+          <p>Atención presencial y en línea. Cobertura en toda la República Mexicana para casos federales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; max-width:600px; margin:0 auto 0;">
+      <div class="section-tag" style="justify-content:center;">Áreas de Práctica</div>
+      <h2 class="section-title" style="color:var(--white);">Servicios jurídicos <em>especializados</em> por materia</h2>
+      <p class="section-sub" style="margin:0 auto;">Contamos con abogados expertos en cada rama del derecho para brindarle la mejor representación posible.</p>
+    </div>
+    <div class="servicios-grid fade-up">
+
+      <!-- LABORAL -->
+      <div class="servicio-card">
+        <img class="serv-img"
+          src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
+          alt="Derecho Laboral">
+        <div class="serv-mat">Materia</div>
+        <div class="serv-icon">👷</div>
+        <div class="serv-title">Derecho Laboral</div>
+        <p class="serv-desc">Defensa de derechos de trabajadores y representación de empresas ante el IMSS, INFONAVIT y Juntas de Conciliación.</p>
+        <ul class="serv-items">
+          <li>Despidos injustificados</li>
+          <li>Liquidaciones y finiquitos</li>
+          <li>Juicios laborales federales</li>
+          <li>Contratos colectivos</li>
+          <li>Seguridad social y IMSS</li>
+        </ul>
+      </div>
+
+      <!-- CIVIL -->
+      <div class="servicio-card">
+        <img class="serv-img"
+          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80"
+          alt="Derecho Civil">
+        <div class="serv-mat">Materia</div>
+        <div class="serv-icon">📜</div>
+        <div class="serv-title">Derecho Civil</div>
+        <p class="serv-desc">Contratos, obligaciones, responsabilidad civil y protección de sus bienes e intereses patrimoniales.</p>
+        <ul class="serv-items">
+          <li>Contratos y obligaciones</li>
+          <li>Herencias y sucesiones</li>
+          <li>Arrendamiento</li>
+          <li>Responsabilidad civil</li>
+          <li>Acciones posesorias</li>
+        </ul>
+      </div>
+
+      <!-- PENAL -->
+      <div class="servicio-card">
+        <img class="serv-img"
+          src="https://images.unsplash.com/photo-1605711285791-0219e80e43a3?w=600&q=80"
+          alt="Derecho Penal">
+        <div class="serv-mat">Materia</div>
+        <div class="serv-icon">🔐</div>
+        <div class="serv-title">Derecho Penal</div>
+        <p class="serv-desc">Defensa penal especializada en el nuevo sistema acusatorio adversarial, tanto en fuero común como federal.</p>
+        <ul class="serv-items">
+          <li>Defensa en carpetas de investigación</li>
+          <li>Audiencias y juicios orales</li>
+          <li>Delitos del fuero común y federal</li>
+          <li>Medidas cautelares</li>
+          <li>Víctimas del delito</li>
+        </ul>
+      </div>
+
+      <!-- FAMILIAR -->
+      <div class="servicio-card">
+        <img class="serv-img"
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80"
+          alt="Derecho Familiar">
+        <div class="serv-mat">Materia</div>
+        <div class="serv-icon">👨‍👩‍👧</div>
+        <div class="serv-title">Derecho Familiar</div>
+        <p class="serv-desc">Asesoría integral en asuntos que afectan el núcleo familiar, con trato humano y resolución eficaz.</p>
+        <ul class="serv-items">
+          <li>Divorcio (voluntario y necesario)</li>
+          <li>Custodia y guarda</li>
+          <li>Pensión alimenticia</li>
+          <li>Adopciones</li>
+          <li>Violencia familiar</li>
+        </ul>
+      </div>
+
+      <!-- MERCANTIL -->
+      <div class="servicio-card">
+        <img class="serv-img"
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+          alt="Derecho Mercantil">
+        <div class="serv-mat">Materia</div>
+        <div class="serv-icon">🏢</div>
+        <div class="serv-title">Derecho Mercantil</div>
+        <p class="serv-desc">Asesoría empresarial, constitución de sociedades y litigios comerciales para proteger sus negocios.</p>
+        <ul class="serv-items">
+          <li>Constitución de empresas</li>
+          <li>Contratos mercantiles</li>
+          <li>Litigios comerciales</li>
+          <li>Concurso mercantil</li>
+          <li>Fusiones y adquisiciones</li>
+        </ul>
+      </div>
+
+      <!-- ADMINISTRATIVO -->
+      <div class="servicio-card">
+        <img class="serv-img"
+          src="https://images.unsplash.com/photo-1493804714600-6edb1cd93080?w=600&q=80"
+          alt="Derecho Administrativo">
+        <div class="serv-mat">Materia</div>
+        <div class="serv-icon">🏛️</div>
+        <div class="serv-title">Derecho Administrativo</div>
+        <p class="serv-desc">Defensa frente a autoridades gubernamentales, recursos administrativos y litigios ante Tribunal Federal.</p>
+        <ul class="serv-items">
+          <li>Recursos de inconformidad</li>
+          <li>Juicio contencioso-administrativo</li>
+          <li>Licitaciones y contratos gov.</li>
+          <li>Multas y sanciones</li>
+          <li>Permisos y concesiones</li>
+        </ul>
+      </div>
+
+      <!-- BIENES RAÍCES -->
+      <div class="servicio-card">
+        <img class="serv-img"
+          src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80"
+          alt="Bienes Raíces">
+        <div class="serv-mat">Materia</div>
+        <div class="serv-icon">🏠</div>
+        <div class="serv-title">Bienes Raíces</div>
+        <p class="serv-desc">Acompañamiento legal en compraventa, donaciones, usufructo y regularización de propiedades en CDMX.</p>
+        <ul class="serv-items">
+          <li>Compraventa de inmuebles</li>
+          <li>Donaciones y herencias</li>
+          <li>Usufructo y copropiedad</li>
+          <li>Regularización de predios</li>
+          <li>Trámites ante notaría</li>
+        </ul>
+      </div>
+
+      <!-- AMPARO -->
+      <div class="servicio-card">
+        <img class="serv-img"
+          src="https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=600&q=80"
+          alt="Juicio de Amparo">
+        <div class="serv-mat">Materia</div>
+        <div class="serv-icon">🗽</div>
+        <div class="serv-title">Juicio de Amparo</div>
+        <p class="serv-desc">La herramienta constitucional más poderosa para proteger sus derechos fundamentales frente a actos de autoridad.</p>
+        <ul class="serv-items">
+          <li>Amparo indirecto y directo</li>
+          <li>Amparo en materia penal</li>
+          <li>Amparo fiscal y laboral</li>
+          <li>Suspensión del acto reclamado</li>
+          <li>Recursos de revisión</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ NOSOTROS -->
+<section id="porque">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; max-width:560px; margin:0 auto 0;">
+      <div class="section-tag" style="justify-content:center;">Nuestra Diferencia</div>
+      <h2 class="section-title">¿Por qué elegir <em>Soluciones Reales México?</em></h2>
+    </div>
+    <div class="porque-grid">
+      <div class="porque-features fade-up">
+        <div class="feature-row">
+          <div class="feat-ico">⚖️</div>
+          <div class="feat-body">
+            <h4>Abogados especializados por materia</h4>
+            <p>No somos generalistas. Cada caso es atendido por el especialista idóneo, garantizando la estrategia más sólida.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feat-ico">📊</div>
+          <div class="feat-body">
+            <h4>Transparencia total en su caso</h4>
+            <p>Le mantenemos informado en cada etapa del proceso. Sin sorpresas, sin letra chica: claridad absoluta.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feat-ico">⏱️</div>
+          <div class="feat-body">
+            <h4>Respuesta ágil y seguimiento puntual</h4>
+            <p>Entendemos la urgencia jurídica. Respondemos en menos de 24 horas y actuamos con la rapidez que su caso exige.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feat-ico">💡</div>
+          <div class="feat-body">
+            <h4>Honorarios justos y accesibles</h4>
+            <p>Calidad legal de primer nivel no debería ser exclusiva. Ofrecemos planes de pago y tarifas transparentes desde el inicio.</p>
+          </div>
+        </div>
+      </div>
+      <div class="porque-img-col fade-up">
+        <img class="porque-img"
+          src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"
+          alt="Abogados comprometidos con sus clientes">
+        <div class="porque-quote">
+          <p>"El acceso a la justicia es un derecho; hacerlo realidad es nuestra vocación."</p>
+          <cite>— Equipo Soluciones Reales México</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; max-width:540px; margin:0 auto 3rem;">
+      <div class="section-tag" style="justify-content:center;">Cómo Trabajamos</div>
+      <h2 class="section-title">Nuestro proceso <em>paso a paso</em></h2>
+      <p class="section-sub" style="margin:0 auto;">Un camino claro desde el primer contacto hasta la resolución de su caso.</p>
+    </div>
+    <div class="proceso-steps fade-up">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Consulta Inicial</h4>
+        <p>Primera reunión sin costo donde escuchamos su caso y evaluamos la situación jurídica.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Diagnóstico Legal</h4>
+        <p>Análisis profundo del expediente, documentos y posibilidades legales a su favor.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Estrategia</h4>
+        <p>Diseñamos la ruta jurídica más efectiva y le explicamos cada paso a seguir.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Representación</h4>
+        <p>Actuamos en su nombre ante autoridades, tribunales y notarías con total compromiso.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <h4>Resolución</h4>
+        <p>Obtenemos el mejor resultado posible y le entregamos informe detallado del proceso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; max-width:540px; margin:0 auto 0;">
+      <div class="section-tag" style="justify-content:center;">Lo que Dicen Nuestros Clientes</div>
+      <h2 class="section-title" style="color:var(--white);">Testimonios de <em>confianza</em></h2>
+    </div>
+    <div class="test-grid fade-up">
+      <div class="test-card">
+        <div class="test-quote-icon">"</div>
+        <p class="test-text">Me ayudaron con mi demanda laboral cuando ya no tenía esperanza. Recuperé mi liquidación completa y mis abogados siempre me mantuvieron informada. Totalmente recomendados.</p>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-author">
+          <strong>María González R.</strong>
+          <span>Cliente en materia Laboral · CDMX</span>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote-icon">"</div>
+        <p class="test-text">Gracias a Soluciones Reales México pude transferir mi propiedad a mis hijos de manera correcta, con toda la asesoría fiscal y notarial. Profesionales, honestos y muy atentos.</p>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-author">
+          <strong>Roberto Mendoza T.</strong>
+          <span>Cliente en Bienes Raíces · Cuauhtémoc</span>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote-icon">"</div>
+        <p class="test-text">En el proceso de divorcio, el trato fue muy humano y profesional. Logramos llegar a un acuerdo justo para mis hijos sin conflictos innecesarios. Excelente despacho.</p>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-author">
+          <strong>Ana Lucía Pérez V.</strong>
+          <span>Cliente en Derecho Familiar · CDMX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; max-width:560px; margin:0 auto 4rem;">
+      <div class="section-tag" style="justify-content:center;">Contáctenos</div>
+      <h2 class="section-title">Su primera consulta es <em>sin costo</em></h2>
+      <p class="section-sub" style="margin:0 auto;">Cuéntenos su caso. Un especialista le contactará en menos de 24 horas.</p>
+    </div>
+    <div class="contacto-grid fade-up">
+
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre completo *</label>
+              <input type="text" placeholder="Ej. Juan García López" required>
+            </div>
+            <div class="form-group">
+              <label>Teléfono *</label>
+              <input type="tel" placeholder="55 1234 5678" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico *</label>
+            <input type="email" placeholder="correo@ejemplo.com" required>
+          </div>
+          <div class="form-group">
+            <label>Área legal de interés *</label>
+            <select required>
+              <option value="" disabled selected>Seleccione una materia</option>
+              <option>Derecho Laboral</option>
+              <option>Derecho Civil</option>
+              <option>Derecho Penal</option>
+              <option>Derecho Familiar</option>
+              <option>Derecho Mercantil</option>
+              <option>Derecho Administrativo</option>
+              <option>Bienes Raíces</option>
+              <option>Juicio de Amparo</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Describa brevemente su caso *</label>
+            <textarea placeholder="Cuéntenos en qué podemos ayudarle..." required></textarea>
+          </div>
+          <p class="form-note">🔒 Su información es estrictamente confidencial. Al enviar, acepta nuestra política de privacidad.</p>
+          <button type="submit" class="btn-primary" style="align-self:flex-start; cursor:pointer; font-family:'Montserrat',sans-serif;">
+            Solicitar Consulta Gratuita →
+          </button>
+          <div id="form-success" style="display:none; color:#2a7d4f; font-size:.8rem; padding:1rem; background:#e8f5ee; border-radius:4px;">
+            ✅ Su mensaje fue enviado. Le contactaremos en breve.
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-info">
+        <div class="info-box">
+          <h3>Encuéntrenos</h3>
+          <div class="info-item">
+            <div class="info-ico">📍</div>
+            <div>
+              <strong>Dirección</strong>
+              <span>Juan de Dios Arias 48, Col. Vista Alegre<br>Cuauhtémoc, C.P. 06800<br>Ciudad de México, CDMX</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-ico">📞</div>
+            <div>
+              <strong>Teléfono / WhatsApp</strong>
+              <span>+52 56 3526 5979</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-ico">📧</div>
+            <div>
+              <strong>Correo electrónico</strong>
+              <span>soluciones.reales.legal@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="horarios-grid" style="margin-top:1.2rem">
+            <div style="grid-column:1/-1; font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; font-weight:500;">Horarios de Atención</div>
+            <div class="hora-item"><span>Lun – Vie</span><span>9:00 – 18:00</span></div>
+            <div class="hora-item"><span>Sábado</span><span>9:00 – 13:00</span></div>
+            <div class="hora-item"><span>WhatsApp</span><span>24 / 7</span></div>
+            <div class="hora-item"><span>Urgencias</span><span>Disponible</span></div>
+          </div>
+        </div>
+
+        <iframe class="map-embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9610278890897!2d-99.1518!3d19.4254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff2095ab7dd9%3A0x0!2sJuan+de+Dios+Arias+48%2C+Vista+Alegre%2C+Cuauht%C3%A9moc%2C+06800+Ciudad+de+M%C3%A9xico!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <svg width="38" height="38" viewBox="0 0 44 44" fill="none">
+          <rect width="44" height="44" rx="2" fill="#162032"/>
+          <rect x="21" y="8" width="2" height="28" fill="#c9a84c"/>
+          <line x1="22" y1="14" x2="10" y2="20" stroke="#c9a84c" stroke-width="1.2"/>
+          <line x1="22" y1="14" x2="34" y2="20" stroke="#c9a84c" stroke-width="1.2"/>
+          <path d="M7 20 Q10 26 13 20" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+          <path d="M31 20 Q34 26 37 20" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+          <rect x="16" y="36" width="12" height="1.5" fill="#c9a84c" rx="1"/>
+          <text x="19" y="33" font-family="serif" font-size="7" fill="#c9a84c" font-weight="bold">SR</text>
+        </svg>
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; color:var(--gold); font-size:.95rem; font-weight:600;">Soluciones Reales México</div>
+          <div style="font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; margin-top:2px;">Despacho Jurídico</div>
+        </div>
+      </div>
+      <p class="footer-desc">Despacho jurídico de excelencia en la Ciudad de México. Comprometidos con la justicia, la ética y los resultados reales para cada cliente.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">📧</a>
+        <a href="#" class="social-btn">📱</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Derecho Laboral</a></li>
+        <li><a href="#servicios">Derecho Civil</a></li>
+        <li><a href="#servicios">Derecho Penal</a></li>
+        <li><a href="#servicios">Derecho Familiar</a></li>
+        <li><a href="#servicios">Derecho Mercantil</a></li>
+        <li><a href="#servicios">Bienes Raíces</a></li>
+        <li><a href="#servicios">Juicio de Amparo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Despacho</h4>
+      <ul>
+        <li><a href="#nosotros">Quiénes Somos</a></li>
+        <li><a href="#porque">Nuestra Diferencia</a></li>
+        <li><a href="#proceso">Proceso Legal</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#contacto">Consulta Gratuita</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="#">Juan de Dios Arias 48</a></li>
+        <li><a href="#">Vista Alegre, Cuauhtémoc</a></li>
+        <li><a href="#">06800 CDMX</a></li>
+        <li><a href="#">+52 55 XXXX XXXX</a></li>
+        <li><a href="#">soluciones.reales.legal@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Soluciones Reales México S.C. · Todos los derechos reservados</span>
+    <span><a href="#">Aviso de Privacidad</a> · <a href="#">Términos de Servicio</a></span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" title="Contactar por WhatsApp" onclick="window.open('https://wa.me/525635265979','_blank')" style="cursor:pointer;">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Intersection Observer para animaciones
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Stagger children si aplica
+        const children = e.target.querySelectorAll('.servicio-card, .step, .stat-box');
+        children.forEach((el, i) => {
+          el.style.transitionDelay = `${i * 80}ms`;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Inicializar cards ocultas
+  document.querySelectorAll('.servicio-card, .step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+  });
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.reset();
+    setTimeout(() => {
+      document.getElementById('form-success').style.display = 'none';
+    }, 5000);
+  }
+</script>
+</body>
+</html>
